@@ -35,6 +35,13 @@ public class Exit {
 	}
 	public void buildExit​(String ex) throws GameException {
 		//take the string from RoomDB, break into split like I did in the mini 1
+		String[] line = ex.split(" ");
+		String exit = line[0];
+		int rmID = Integer.parseInt(line[1]);
+		Exit build = new Exit();
+		build.setDirection​(exit);
+		build.setDestination​(rmID);
+		
 	}
 
 	@Override

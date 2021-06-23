@@ -55,6 +55,7 @@ public class RoomDB {
 			Room[] roomArray = new Room[6];
 			ArrayList<Exit> roomExits = new ArrayList<>();
 			new ItemDB idb = new ItemDB();
+			Exit newExit = new Exit();
 				while (scan.hasNextLine()) {
 					
 					roomNum = Integer.parseInt(scan.nextLine());
@@ -70,8 +71,8 @@ public class RoomDB {
 
 							if (!roomDirection.matches("----")) {
 
-								
-								roomExits.add(roomDirection);
+								newExit = buildExit(roomDirection);
+								roomExits.add(newExit);
 							}
 
 						} while (!roomDirection.matches("----"));
