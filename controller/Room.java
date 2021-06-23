@@ -16,11 +16,12 @@ public class Room {
 	private ItemDB idb;
 	
 	public Room() {
-		// should initialize exits and items ArrayLists
+		exits = new ArrayList<>();
+		items = new ArrayList<>();
 	}
 	
 	public Room(int id) throws GameException{
-		
+		this.roomID = id;
 	}
 	
 	public String display() throws GameException {

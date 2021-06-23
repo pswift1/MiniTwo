@@ -21,21 +21,23 @@ public class ItemDB {
 	private ArrayList<Item> items;
 	
 	
-	private ItemDB(ArrayList<Item> items) {
-		super();
-		this.items = items;
+	private ItemDB() {
+		
 	}
 	
 	
 	public static ItemDB getInstance() {
+		if (instance == null){
+            instance = new ItemDB();
+        }
 		return instance;
 	}
 	
-	public Item getItem​(int id) throws FileNotFoundException{
-		return null;
+	public Item getItem​(int id) throws GameException{
+		return items;
 	}
 	
-	public void readItems() throws FileNotFoundException{
+	public void readItems() throws GameException{
 		
 		File itemTxt = new File("Items.txt");
 		

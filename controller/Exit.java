@@ -17,26 +17,24 @@ public class Exit {
 	private final List<String> VALID_DIRECTIONS = null;
 	
 	public Exit() {
-		super();
-		this.destination = destination;
-		this.direction = direction;
+		
 		
 	}
 	
 	public String getDirection() {
-		return direction;
+		return this.direction;
 	}
 	public void setDirection​(String direction) {
 		this.direction = direction;
 	}
 	public int getDestination() {
-		return destination;
+		return this.destination;
 	}
 	public void setDestination​(int destination) {
 		this.destination = destination;
 	}
 	public void buildExit​(String ex) throws GameException {
-		
+		//take the string from RoomDB, break into split like I did in the mini 1
 	}
 
 	@Override

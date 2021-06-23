@@ -9,48 +9,59 @@
 package model;
 import java.io.File;
 import java.util.*;
+
+import controller.Exit;
 import controller.Item;
 import controller.Room;
+import gameExceptions.GameException;
 
 public class RoomDB {
 	
 	private static RoomDB instance;
 	private ArrayList<Room> rooms;
 	
-	
-	 static RoomDB getInstance() {
-		return instance;
+	private RoomDB() {
+		
 	}
 	
-	 ArrayList<Item> getItems() {
+	
+	 public static RoomDB getInstance() {
+		 if (instance == null){
+	            instance = new RoomDB();
+	        }
+		 return instance;
+	}
+	
+	 public ArrayList<Item> getItems() {
 		return null;
 		 }
 	 
-	 String getMap() {
+	 public String getMap() {
 		return null; 
 	 }
 	 
-	 Room getRoom(int roomID) {
+	 public Room getRoom(int roomID) {
 		 return null;
 	 }
 	 
-	 public void readRooms() {
+	 public void readRooms() throws GameException{
 		 File roomTxt = new File("Rooms.txt");
 			try (Scanner scan = new Scanner(roomTxt)){
 				
-			HashMap <String, Integer> roomExits;
 			int i = 0;
 			int roomNum;
 			String roomName;
 			String roomDesc;
-			
+			Room[] roomArray = new Room[6];
+			ArrayList<Exit> roomExits = new ArrayList<>();
+			new ItemDB idb = new ItemDB();
 				while (scan.hasNextLine()) {
 					
 					roomNum = Integer.parseInt(scan.nextLine());
 					roomName = scan.nextLine();
 					roomDesc = scan.nextLine();
 					String roomDirection;
-					roomExits = new HashMap<>();
+					
 					
 					if (scan.nextLine().matches("----")) {
 						do {
@@ -59,16 +70,14 @@ public class RoomDB {
 
 							if (!roomDirection.matches("----")) {
 
-								String[] line = roomDirection.split(" ");
-								String exit = line[0];
-								int rmID = Integer.parseInt(line[1]);
-								roomExits.put(exit, rmID);
+								
+								roomExits.add(roomDirection);
 							}
 
 						} while (!roomDirection.matches("----"));
 					}
 
-					Room newRoom = new Room(roomNum, roomName, roomDesc, false, roomExits);
+					Room newRoom = new Room(roomNum, roomName, roomDesc, roomExits, new ArrayList<Integer>(), false, idb);
 					roomArray[i] = newRoom;
 					i++;
 					
