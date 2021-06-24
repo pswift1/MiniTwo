@@ -14,7 +14,7 @@ import gameExceptions.GameException;
 public class GameController {
 	
 	private Commands commands;
-	static int FIRST_ROOM;
+	public static final int FIRST_ROOM = 1;
 	
 	public GameController(Commands commands) {
 		super();
@@ -28,7 +28,7 @@ public class GameController {
 		return null;
 	}
 	public String printMap() throws GameException{
-		return null;
+		return RoomDB.getInstance().getMap();;
 	}
 	
 

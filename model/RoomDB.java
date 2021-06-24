@@ -8,6 +8,7 @@
 */
 package model;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 import controller.Exit;
@@ -40,8 +41,13 @@ public class RoomDB {
 		return null; 
 	 }
 	 
-	 public Room getRoom(int roomID) {
-		 return null;
+	 public Room getRoom(int roomID) throws GameException{
+		 for (Room room : rooms) {
+			 if (room.getRoomID() == roomID) {
+				 return room;
+			 }
+		 }
+		 throw new GameException("This room is not found.");
 	 }
 	 
 	 public void readRooms() throws GameException{
@@ -86,7 +92,7 @@ public class RoomDB {
 				} 
 				
 			}
-			catch (NumberFormatException e) {
+			catch (NumberFormatException | FileNotFoundException e) {
 				e.printStackTrace();
 			}
 		 

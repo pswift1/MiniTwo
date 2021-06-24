@@ -13,8 +13,8 @@ import gameExceptions.GameException;
 
 public class Commands {
 	
-	protected static final List<Character> VALID_DIRECTIONS = null;
-	protected static final List<Character> ITEM_COMMANDS = null;
+	protected static final List<Character> VALID_DIRECTIONS = Arrays.asList('N', 'S', 'E', 'W', 'U', 'D');
+	protected static final List<Character> ITEM_COMMANDS = Arrays.asList('I', 'G', 'R');
 	public static final int EXIT_COMMAND = 0;
 	private Player player;
 	

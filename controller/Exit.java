@@ -14,7 +14,7 @@ public class Exit {
 	
 	private int destination;
 	private String direction;
-	private final List<String> VALID_DIRECTIONS = null;
+	private final List<String> VALID_DIRECTIONS = Arrays.asList("North", "South", "East", "West", "Up", "Down");
 	
 	public Exit() {
 		
@@ -34,7 +34,7 @@ public class Exit {
 		this.destination = destination;
 	}
 	public void buildExit​(String ex) throws GameException {
-		//take the string from RoomDB, break into split like I did in the mini 1
+		
 		String[] line = ex.split(" ");
 		String exit = line[0];
 		int rmID = Integer.parseInt(line[1]);

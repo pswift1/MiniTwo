@@ -1,3 +1,12 @@
+/**Class: Room   
+* @author Peter Swift   
+* @version 1.0    
+* Course: ITEC 3860 Summer 2021   
+* Written: June 24, 2021   
+*    
+* This class – builds an Room object
+*/
+
 package controller;
 import java.util.*;
 
@@ -58,7 +67,7 @@ public class Room {
 		return new ArrayList<Item>();
 	}
 	public int getRoomID() {
-		return roomID;
+		return this.roomID;
 	}
 	public void setRoomID(int roomID) {
 		this.roomID =roomID;
