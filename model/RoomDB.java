@@ -4,7 +4,7 @@
 * Course: ITEC 3860 Summer 2021   
 * Written: June 21, 2021   
 *    
-* This class � builds an ArrayList out of rooms in the game
+* This class – builds an ArrayList out of rooms in the game
 */
 package model;
 import java.io.File;
@@ -71,7 +71,7 @@ public class RoomDB {
 
 							if (!roomDirection.matches("----")) {
 
-								newExit = buildExit(roomDirection);
+								newExit.buildExit​(roomDirection);
 								roomExits.add(newExit);
 							}
 

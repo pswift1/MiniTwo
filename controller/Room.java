@@ -3,6 +3,7 @@ import java.util.*;
 
 import gameExceptions.GameException;
 import model.ItemDB;
+import model.RoomDB;
 
 
 public class Room {
@@ -14,6 +15,7 @@ public class Room {
 	private ArrayList<Integer> items;
 	private boolean visited;
 	private ItemDB idb;
+	private RoomDB rdb;
 	
 	public Room() {
 		exits = new ArrayList<>();
