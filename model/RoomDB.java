@@ -54,13 +54,13 @@ public class RoomDB {
 			String roomDesc;
 			Room[] roomArray = new Room[6];
 			ArrayList<Exit> roomExits = new ArrayList<>();
-			new ItemDB idb = new ItemDB();
+			Room newRoom = new Room();
 			Exit newExit = new Exit();
 				while (scan.hasNextLine()) {
 					
-					roomNum = Integer.parseInt(scan.nextLine());
-					roomName = scan.nextLine();
-					roomDesc = scan.nextLine();
+					newRoom.setRoomID(Integer.parseInt(scan.nextLine()));
+					newRoom.setName(scan.nextLine());
+					newRoom.setDescription(scan.nextLine());
 					String roomDirection;
 					
 					
@@ -73,12 +73,13 @@ public class RoomDB {
 
 								newExit.buildExit​(roomDirection);
 								roomExits.add(newExit);
+								
 							}
 
 						} while (!roomDirection.matches("----"));
 					}
 
-					Room newRoom = new Room(roomNum, roomName, roomDesc, roomExits, new ArrayList<Integer>(), false, idb);
+					newRoom.setExits(roomExits);
 					roomArray[i] = newRoom;
 					i++;
 					
