@@ -65,19 +65,13 @@ public class Item {
 	}
 	
 	/** Method: display
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	 * * This method returns the itemDescription which is the String 
+	 * * that will be displayed in the game
+	 * * @return the String to display in the game  */
 	public String display() {
 		return itemDescription.toString();
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
 
 	@Override
 	public String toString() {

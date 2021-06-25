@@ -26,224 +26,183 @@ public class Room {
 	private ItemDB idb;
 	private RoomDB rdb;
 	
-	/** Method: Constructor for the GameController class
-	 * * Instantiates the Commands object for the game 
+	/** Method: Constructor for the Room class
+	 * * Instantiates exits and items ArrayLists
+	 * * and gets the current map
 	 * */
 	public Room() {
 		exits = new ArrayList<>();
 		items = new ArrayList<>();
 	}
 	
-	/** Method: Constructor for the GameController class
-	 * * Instantiates the Commands object for the game 
-	 * */
+	/** Method: Constructor for the Room class
+	 * * constructs the room object with the given ID 
+	 * * @param id - the id to assign to the room */
 	public Room(int id) throws GameException{
 		this.roomID = id;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: display
+	 * * Builds a String representation of the current room 
+	 * * Calls buildItems, buildDescription, and displayExits to build this String
+	 * * @return String - the current room display String  */
 	public String display() throws GameException {
 		return this.name;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: buildDescription
+	 * * Builds a String of the description
+	 * * @return String - the current room description text  */
 	private String buildDescription() {
 		return this.description;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: buildItems
+	 * * Builds a String of the items in the room
+	 * * @return String - the current room items text  */
 	private String buildItems() throws GameException{
 		return items.toString();
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: removeItem
+	 * * Removes an item from the room. Removes it and 
+	 * * calls updateRoom to save the changes
+	 * * @param item - - the Item to remove  */
 	public void removeItem(Item item) throws GameException{
 		//remove item and calls UpdateRoom to save the changes
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: dropItem
+	 * * Adds an item to the room. Adds it and 
+	 * * calls updateRoom to save the changes
+	 * * @param item - - the Item to add  */
 	public void dropItem(Item item) throws GameException {
 		//remove item from inventory and updateRoom
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: updateRoom
+	 * *  Calls RoomDB updateRoom(this) to save the current room in the map  */
 	public void updateRoom() throws GameException {
 		
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: displayExits
+	 * * Builds a String of the exits in the room
+	 * * @return String - the current room exits text  */
 	private String displayExits() {
 		return exits.toString();
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: retrieveByID
+	 * * Retrieves the requested Room from RoomDB. Sets 
+	 * * its values into the current Room and returns it
+	 * * @param roomNum - ID of the room to retrieve
+	 * * @return Room - the requested Room  */
 	public Room retrieveByID(int roomNum) throws GameException {
 		return this;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: validDirection
+	 * * Determines if the direction entered by the user is 
+	 * * valid for this room Throws an exception if this is invalid
+	 * * @param cmd - - The direction the user wants to move
+	 * * @return int - the ID of the destination room  */
 	public int validDirection (char cmd) throws GameException {
 		return roomID;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: getRoomItems
+	 * * This method calls RoomDB to get the items that are in the current room
+	 * * @return ArrayList Item - the items in the room  */
 	public ArrayList<Item> getRoomItems() throws GameException {
 		return new ArrayList<Item>();
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: getRoomID
+	 * * getter for roomId
+	 * * @return the room ID  */
 	public int getRoomID() {
 		return this.roomID;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: setRoomID
+	 * * setter for RoomID
+	 * * @param roomID - the int to set the RoomID with   */
 	public void setRoomID(int roomID) {
 		this.roomID =roomID;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: getName
+	 * * getter for room Name
+	 * * @return the room name  */
 	public String getName() {
 		return this.name;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: setName
+	 * * setter for room name
+	 * * @param name - the string to set the name with   */
 	public void setName(String name) throws GameException{
 		this.name = name;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: getDesscription
+	 * * getter for room description
+	 * * @return the room description  */
 	public String getDescription() {
 		return this.description;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: setDescription
+	 * * setter for room description
+	 * * @param description - the string to set the desc. with   */
 	public void setDescription(String description) throws GameException{
 		this.description = description;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: getExits
+	 * * getter for the room Exits
+	 * * @return the ArrayList of Exits in the room  */
 	public ArrayList<Exit> getExits(){
 		return this.exits;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: setExits
+	 * * setter for room Exits
+	 * * @param exits - the ArrayList of exits to set for the room  */
 	public void setExits(ArrayList<Exit> exits) {
 		this.exits =exits;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: isVisited
+	 * * getter for visited
+	 * * @return the visited boolean  */
 	public boolean isVisited() {
-		return false;
+		return this.visited;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: setVisited
+	 * * setter for visited
+	 * * @param visited - the boolean if the 
+	 * * room has been visited or not */
 	public void setVisited(boolean visited) {
 		this.visited = visited;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: getItems
+	 * * getter for the item IDs ArrayList
+	 * * @return the list of Item ids in the Room  */
 	public ArrayList<Integer> getItems() {
 		return this.items;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: setItems
+	 * * setter for the ArrayList Integer containing the Item Ids
+	 * * @param items - - the ArrayList to be set */
 	public void setItems(ArrayList<Integer> items) {
 		this.items = items;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
 
 	@Override
 	public String toString() {

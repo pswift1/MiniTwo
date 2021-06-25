@@ -17,54 +17,44 @@ public class Exit {
 	private final List<String> VALID_DIRECTIONS = Arrays.asList("North", "South", "East", "West", "Up", "Down");
 	
 	
-	/** Method: Constructor for the GameController class
-	 * * Instantiates the Commands object for the game 
-	 * */
+	/** Method: Constructor for the Exit class */
 	public Exit() {
 				
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: getDirection
+	 * * getter for the Direction
+	 * * @return String containing the direction  */
 	public String getDirection() {
 		return this.direction;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: setDirection
+	 * * setter for Direction
+	 * * @param direction - the direction to be set  */
 	public void setDirection​(String direction) {
 		this.direction = direction;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: getDestination
+	 * * getter for the destination room number
+	 * * @return int containing the destination  */
 	public int getDestination() {
 		return this.destination;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: setDestination
+	 * * setter for Destination
+	 * * @param destination - the target destination to be set  */
 	public void setDestination​(int destination) {
 		this.destination = destination;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: buildExit
+	 * * Builds an Exit from the String provided 
+	 * * throws an exception for an invalid exit
+	 * * @param ex - - String containing the information for the exit
+	 */
 	public void buildExit​(String ex) throws GameException {
 		
 		String[] line = ex.split(" ");
@@ -75,12 +65,7 @@ public class Exit {
 		build.setDestination​(rmID);
 		
 	}
-	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+
 
 	@Override
 	public String toString() {

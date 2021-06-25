@@ -13,8 +13,9 @@ public class Player {
 	private ArrayList<Item> inventory;
 	private int curRoom;
 	
-	/** Method: Constructor for the GameController class
-	 * * Instantiates the Commands object for the game 
+	/** Method: Constructor for the Player class
+	 * * Instantiates the inventory ArrayList and sets 
+	 * * the current room to 1 (the starting room)
 	 * */
 	protected Player() {
 		 
@@ -22,56 +23,44 @@ public class Player {
 		 curRoom = 1;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: addItem
+	 * * Adds an item to the player's inventory
+	 * * @param it - - the Item to add to the inventory */
 	protected void addItem​(Item it) {
 		inventory.add(it);
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: removeItem
+	 * * Removes an item from the player's inventory
+	 * * @param it - the item to be removed from the inventory */
 	protected void removeItem​(Item it) {
 		inventory.remove(it);
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: printInventory
+	 * * Returns the String of all items in the player's inventory
+	 * * @return String - the String of the player's inventory  */
 	protected String printInventory() {
 		return null;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: getCurRoom
+	 * * getter for the ID of the room the Player is currently in
+	 * * @return the id of the current room  */
 	public int getCurRoom() {
 		return curRoom;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: setCurRoom
+	 * * setter for the ID of the room the Player is currently in
+	 * * @param current - the id of the current room  */
 	public void setCurRoom​(int current) {
 		curRoom = current;
 	}
 	
-	/** Method: executeCommand
-	 * * Handles the user input from Adventure Sends the user's command 
-	 * * to Commands for processing throws an exception if the command is not valid
-	 * * @param cmd - String
-	 * * @return the result from the command  */
+	/** Method: getInventory
+	 * * gets the Item ArrayList the makes up the player's inventory
+	 * * @return the ArrayList of the current Items in the player's inventory  */
 	protected ArrayList<Item> getInventory(){
 		return inventory;
 	}
