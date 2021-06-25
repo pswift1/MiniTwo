@@ -21,26 +21,57 @@ public class RoomDB {
 	private static RoomDB instance;
 	private ArrayList<Room> rooms;
 	
+	
+	/** Method: RoomDB constructor
+	 * * Remains private to implement the Singleton pattern */
 	private RoomDB() {
 		
 	}
 	
-	
+	/** Method: getInstance
+	 * * Implements the Singleton pattern for our instance. 
+	 * * If instance is null, the private constructor is called.
+	 * * If it is not, it simply returns the instance
+	 * * @return the instance in the class.  */
 	 public static RoomDB getInstance() {
 		 if (instance == null){
 	            instance = new RoomDB();
 	        }
 		 return instance;
 	}
-	
-	 public ArrayList<Item> getItems() {
-		return null;
+	 
+	 /** Method: getItems
+		 * * Retrieves the Item ArrayList contained in the room that
+		 * * is input by the user.
+		 * * Throws Exception if roomID not found.
+		 * * @param roomID - roomNum of the requested room
+		 * * @return the ArrayList of items in the room.  */
+	 public ArrayList<Item> getItems(int roomID) throws GameException{
+		 ArrayList<Item> it = new ArrayList<Item>();
+			for(Room room : rooms) {
+			    if(room.getRoomID() == roomID) {
+				 it.add(ItemDB.getInstance().getItem​(roomID));	
+			    }
+			    
+				throw new GameException("That room is not found.");
+			    
+			}
+			
+			return it;
 		 }
 	 
+	 /** Method: getMap
+		 * * Returns the map of the game.
+		 * * @return the completed map.  */
 	 public String getMap() {
 		return null; 
 	 }
 	 
+	 /** Method: getRoom
+		 * * Prompts the user for the number of the room they wish to get.
+		 * * Throws an exception if the room number isn't found.
+		 * * @param id - the ID number of the room you are trying to retrieve
+		 * * @return the room with the ID number that has been input.  */
 	 public Room getRoom(int roomID) throws GameException{
 		 for (Room room : rooms) {
 			 if (room.getRoomID() == roomID) {
@@ -49,7 +80,16 @@ public class RoomDB {
 		 }
 		 throw new GameException("This room is not found.");
 	 }
-	 
+
+	 /** Method: readRooms
+		 * * Reads the room text file and writes it to the program
+		 * * Note: Does not used fixed file paths, must place in 
+		 * * folder that holds the project. "Rooms.txt" should 
+		 * * be the  name of the file.
+		 * * File format must be in this order: (Line 1 - room number
+		 * * Line 2 - room name, Line 3 - Room Description, Line 4 - 
+		 * * "----", Line 5 - The exits) or the reader  
+		 * * won't properly read the format.  */
 	 public void readRooms() throws GameException{
 		 File roomTxt = new File("Rooms.txt");
 			try (Scanner scan = new Scanner(roomTxt)){
@@ -97,8 +137,11 @@ public class RoomDB {
 			}
 		 
 	 }
-	 
-	 public void updateRoom(Room rm) {
+	 /** Method: updateRoom
+		 * * Updates the room in the current map 
+		 * * throws an exception if the room is not found
+		 * * @param rm - the Room that is being updated */
+	 public void updateRoom(Room rm) throws GameException{
 		 
 	 }
 

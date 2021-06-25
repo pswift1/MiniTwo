@@ -15,16 +15,19 @@ public class Adventure {
 	private Scanner input;
 	
 	
-	
-	public Adventure(GameController gc, Scanner input) {
-		super();
-		this.gc = gc;
-		this.input = input;
+	/** Method: Adventure Constructor
+	 * * Creates an instance of the GameController class
+	 * * 
+	 */
+	public Adventure() {
+		
+		gc = new GameController(null);
+		
 	}
 	
 	
 	/** Method: getCommand
-	 * Convert calendar date into Julian day.
+	 * Prompts the user for their input and returns this to playGame
 	 * * Note: This algorithm is from Press et al., Numerical Recipes
 	 * * in C, 2nd ed., Cambridge University Press, 1992
 	 * * @param day day of the date to be converted

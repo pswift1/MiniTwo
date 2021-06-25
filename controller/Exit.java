@@ -16,23 +16,55 @@ public class Exit {
 	private String direction;
 	private final List<String> VALID_DIRECTIONS = Arrays.asList("North", "South", "East", "West", "Up", "Down");
 	
+	
+	/** Method: Constructor for the GameController class
+	 * * Instantiates the Commands object for the game 
+	 * */
 	public Exit() {
-		
-		
+				
 	}
 	
+	/** Method: executeCommand
+	 * * Handles the user input from Adventure Sends the user's command 
+	 * * to Commands for processing throws an exception if the command is not valid
+	 * * @param cmd - String
+	 * * @return the result from the command  */
 	public String getDirection() {
 		return this.direction;
 	}
+	
+	/** Method: executeCommand
+	 * * Handles the user input from Adventure Sends the user's command 
+	 * * to Commands for processing throws an exception if the command is not valid
+	 * * @param cmd - String
+	 * * @return the result from the command  */
 	public void setDirection​(String direction) {
 		this.direction = direction;
 	}
+	
+	/** Method: executeCommand
+	 * * Handles the user input from Adventure Sends the user's command 
+	 * * to Commands for processing throws an exception if the command is not valid
+	 * * @param cmd - String
+	 * * @return the result from the command  */
 	public int getDestination() {
 		return this.destination;
 	}
+	
+	/** Method: executeCommand
+	 * * Handles the user input from Adventure Sends the user's command 
+	 * * to Commands for processing throws an exception if the command is not valid
+	 * * @param cmd - String
+	 * * @return the result from the command  */
 	public void setDestination​(int destination) {
 		this.destination = destination;
 	}
+	
+	/** Method: executeCommand
+	 * * Handles the user input from Adventure Sends the user's command 
+	 * * to Commands for processing throws an exception if the command is not valid
+	 * * @param cmd - String
+	 * * @return the result from the command  */
 	public void buildExit​(String ex) throws GameException {
 		
 		String[] line = ex.split(" ");
@@ -43,6 +75,12 @@ public class Exit {
 		build.setDestination​(rmID);
 		
 	}
+	
+	/** Method: executeCommand
+	 * * Handles the user input from Adventure Sends the user's command 
+	 * * to Commands for processing throws an exception if the command is not valid
+	 * * @param cmd - String
+	 * * @return the result from the command  */
 
 	@Override
 	public String toString() {

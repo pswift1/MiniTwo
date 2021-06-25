@@ -14,11 +14,7 @@ public class GameException extends IOException{
 	
 	public GameException() {
 		super();
-		// FileNotFoundException
-		//ArgumentException
-		//InvalidOperationException
-		//NoSuchElementException
-		//
+		
 	}
 	
 	public GameException(String message) {
