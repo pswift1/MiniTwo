@@ -64,7 +64,8 @@ public class RoomDB {
 		 * * Returns the map of the game.
 		 * * @return the completed map.  */
 	 public String getMap() {
-		return null; 
+		 String map = rooms.toString();
+		    return map; 
 	 }
 	 
 	 /** Method: getRoom
@@ -142,6 +143,11 @@ public class RoomDB {
 		 * * throws an exception if the room is not found
 		 * * @param rm - the Room that is being updated */
 	 public void updateRoom(Room rm) throws GameException{
+		 
+		 if (!rooms.contains(rm)) {
+			 throw new GameException ("This room doesn't exist");	 
+		 }
+		 
 		 
 	 }
 

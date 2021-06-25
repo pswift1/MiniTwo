@@ -61,7 +61,10 @@ public class Room {
 	 * * Builds a String of the items in the room
 	 * * @return String - the current room items text  */
 	private String buildItems() throws GameException{
-		return items.toString();
+		if(items == null) {
+			throw new GameException("This room has no items");
+		}
+		return this.items.toString();
 	}
 	
 	/** Method: removeItem
@@ -90,7 +93,7 @@ public class Room {
 	 * * Builds a String of the exits in the room
 	 * * @return String - the current room exits text  */
 	private String displayExits() {
-		return exits.toString();
+		return this.exits.toString();
 	}
 	
 	/** Method: retrieveByID
@@ -99,7 +102,12 @@ public class Room {
 	 * * @param roomNum - ID of the room to retrieve
 	 * * @return Room - the requested Room  */
 	public Room retrieveByID(int roomNum) throws GameException {
-		return this;
+		Room rm = new Room();
+		rm = rdb.getRoom(roomNum);
+		if (rm ==null) {
+			throw new GameException("This room can't be found");
+		}
+		return rm;
 	}
 	
 	/** Method: validDirection
@@ -108,14 +116,22 @@ public class Room {
 	 * * @param cmd - - The direction the user wants to move
 	 * * @return int - the ID of the destination room  */
 	public int validDirection (char cmd) throws GameException {
-		return roomID;
+		for(Exit ex : exits) {
+		    char direction = ex.getDirection().charAt(0);	    
+		    if(Character.toUpperCase(direction) == Character.toUpperCase(cmd)) {
+			return ex.getDestination();
+		    }
+		}
+		throw new GameException("That exit doesn't exist.");
 	}
 	
 	/** Method: getRoomItems
 	 * * This method calls RoomDB to get the items that are in the current room
 	 * * @return ArrayList Item - the items in the room  */
 	public ArrayList<Item> getRoomItems() throws GameException {
-		return new ArrayList<Item>();
+		ArrayList<Item> it = new ArrayList<Item>();
+		it = rdb.getItems(this.roomID);
+		return it;
 	}
 	
 	/** Method: getRoomID
@@ -143,6 +159,9 @@ public class Room {
 	 * * setter for room name
 	 * * @param name - the string to set the name with   */
 	public void setName(String name) throws GameException{
+		if (name.isBlank()) {
+			throw new GameException("The name cannot be blank.");
+		}
 		this.name = name;
 	}
 	
@@ -157,6 +176,9 @@ public class Room {
 	 * * setter for room description
 	 * * @param description - the string to set the desc. with   */
 	public void setDescription(String description) throws GameException{
+		if (description.isBlank()) {
+			throw new GameException("The description must be at least one line");
+		}
 		this.description = description;
 	}
 	
@@ -171,7 +193,7 @@ public class Room {
 	 * * setter for room Exits
 	 * * @param exits - the ArrayList of exits to set for the room  */
 	public void setExits(ArrayList<Exit> exits) {
-		this.exits =exits;
+		this.exits = exits;
 	}
 	
 	/** Method: isVisited
