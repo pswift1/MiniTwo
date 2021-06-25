@@ -23,6 +23,7 @@ public class ItemDB {
 	/** Method:ItemDB Constructor
 	 ** Private constructor to implement the singleton*/
 	private ItemDB() {
+		items = new ArrayList<>();
 		
 	}
 	

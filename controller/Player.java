@@ -41,7 +41,11 @@ public class Player {
 	 * * Returns the String of all items in the player's inventory
 	 * * @return String - the String of the player's inventory  */
 	protected String printInventory() {
-		return null;
+		String inv = null;
+		for (Item it : inventory) {
+			inv = inv + it.toString();
+		}
+		return inv;
 	}
 	
 	/** Method: getCurRoom

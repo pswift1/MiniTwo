@@ -69,7 +69,7 @@ public class Item {
 	 * * that will be displayed in the game
 	 * * @return the String to display in the game  */
 	public String display() {
-		return itemDescription.toString();
+		return this.itemDescription.toString();
 	}
 	
 
