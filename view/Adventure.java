@@ -111,7 +111,7 @@ public class Adventure {
 	 * * @param month month of the date to be converted
 	 * * @param year year of the date to be converted
 	 * * @return the Julian day number that begins at noon of the* given calendar date.  */
-	static void main(String[] args) {
+	public static void main(String[] args) {
 		
 		Adventure adv = new Adventure();
 		adv.input = new Scanner(System.in);
