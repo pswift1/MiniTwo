@@ -147,8 +147,14 @@ public class RoomDB {
 		 if (!rooms.contains(rm)) {
 			 throw new GameException ("This room doesn't exist");	 
 		 }
+		 for(Room room : rooms) {
+				if(rm.getRoomID() == room.getRoomID()) {
+				    int index = rooms.indexOf(room);
+				    rooms.set(index, rm);
+				}
 		 
 		 
 	 }
 
+}
 }

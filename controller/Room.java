@@ -47,7 +47,7 @@ public class Room {
 	 * * Calls buildItems, buildDescription, and displayExits to build this String
 	 * * @return String - the current room display String  */
 	public String display() throws GameException {
-		return this.name;
+		return (buildItems() + ",%n" +  displayExits() + ",%n " + buildDescription());
 	}
 	
 	/** Method: buildDescription
@@ -72,7 +72,11 @@ public class Room {
 	 * * calls updateRoom to save the changes
 	 * * @param item - - the Item to remove  */
 	public void removeItem(Item item) throws GameException{
-		//remove item and calls UpdateRoom to save the changes
+		if (!items.contains(item)) {
+			throw new GameException("That item isn't in this room");
+		}
+		items.remove(item);
+		updateRoom();
 	}
 	
 	/** Method: dropItem
@@ -80,13 +84,19 @@ public class Room {
 	 * * calls updateRoom to save the changes
 	 * * @param item - - the Item to add  */
 	public void dropItem(Item item) throws GameException {
-		//remove item from inventory and updateRoom
+		items.add(item.getItemID());
+		updateRoom();
 	}
 	
 	/** Method: updateRoom
 	 * *  Calls RoomDB updateRoom(this) to save the current room in the map  */
 	public void updateRoom() throws GameException {
-		
+		try{
+			rdb.updateRoom(this);
+		}catch (GameException ge) {
+			
+		System.out.println("An error occurred");
+		}
 	}
 	
 	/** Method: displayExits
