@@ -10,6 +10,7 @@ package controller;
 import java.util.*;
 
 import gameExceptions.GameException;
+import model.RoomDB;
 
 public class GameController {
 	
@@ -28,7 +29,18 @@ public class GameController {
 	 * * Retrieves the Dring for the first room
 	 * * @return the first room display String  */
 	public String displayFirstRoom() throws GameException{
-		return null;
+		String firstRoom;
+		Room room = new Room().retrieveByID(FIRST_ROOM);
+		
+		if(room == null) {
+		    throw new GameException("There is no first room!");
+		}
+		else {
+		
+		    firstRoom = room.toString();
+		}
+				
+		return firstRoom;
 	}
 	
 	/** Method: executeCommand
@@ -37,7 +49,8 @@ public class GameController {
 	 * * @param cmd - String
 	 * * @return the result from the command  */
 	public String executeCommand​(String cmd) throws GameException{
-		return null;
+		String output = commands.executeCommand​(cmd);
+		return output;  
 	}
 	
 	/** Method: printMap
@@ -45,7 +58,7 @@ public class GameController {
 	 * * to get a String representation of the current map
 	 * * @return to get a String representation of the current map  */
 	public String printMap() throws GameException{
-		return RoomDB.getInstance().getMap();;
+		return RoomDB.getInstance().getMap();
 	}
 	
 
