@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-import ClassExamples.Room;
+import controller.Room;
 import controller.Item;
 import gameExceptions.GameException;
 
@@ -68,13 +68,11 @@ public class ItemDB {
 		
 		try (Scanner scan = new Scanner(itemTxt)){
 			
-		int i = 0;
-		int itemNum;
-		String itemName;
-		String itemDesc;
-		
 		
 		while (scan.hasNextLine()) {
+			int itemNum;
+			String itemName;
+			String itemDesc;
 			itemNum = Integer.parseInt(scan.nextLine());
 			itemName = scan.nextLine();
 			itemDesc = scan.nextLine();
@@ -84,7 +82,7 @@ public class ItemDB {
 			newItem.setItemName​(itemName);
 			newItem.setItemDescription​(itemDesc);
 			items.add(newItem);
-			i++;
+			
 		}
 		
 		// this has to find and read the items from the text

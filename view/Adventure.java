@@ -9,6 +9,8 @@
 package view;
 import java.io.FileNotFoundException;
 import java.util.*;
+
+import controller.Commands;
 import controller.GameController;
 import controller.Item;
 import controller.Room;
@@ -27,7 +29,7 @@ public class Adventure {
 	 */
 	public Adventure() {
 		
-		gc = new GameController(null);
+		gc = new GameController(new Commands());
 		
 	}
 	
@@ -92,7 +94,7 @@ public class Adventure {
 				loop = true;
 		     }
 		     else {
-			 System.out.println("That's not a right command. Try again.");
+			 System.out.println("This command is invalid. Try again.");
 			 loop = true;
 		     }
 			

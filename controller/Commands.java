@@ -21,7 +21,7 @@ public class Commands {
 	/** Method:  Constructor for the Commands class 
 	 * * Instantiates a new player object for tracking inventory in the game 
 	 * */
-	Commands(){
+	public Commands(){
 		player = new Player();
 	}
 	
@@ -37,8 +37,7 @@ public class Commands {
 		char cmdChar = cmdLine.toUpperCase().charAt(0);
 		
 		
-		if( cmdChar == 'I' || cmdChar == 'G' || cmdChar == 'R'
-			|| cmdLine.equalsIgnoreCase("inspect")) {
+		if( cmdChar == 'I' || cmdChar == 'G' || cmdChar == 'R') {
 			  
 			returnCommand = 1;
 		}
@@ -48,7 +47,7 @@ public class Commands {
 		    
 			returnCommand = 2;
 		}
-		else if(cmdChar == 'L' || cmdLine.equalsIgnoreCase("look"))  {
+		else if(cmdChar == 'L' )  {
 			    
 			returnCommand = 3;
 		}

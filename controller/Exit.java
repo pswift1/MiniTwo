@@ -61,8 +61,8 @@ public class Exit {
 		String exit = line[0];
 		int rmID = Integer.parseInt(line[1]);
 		Exit build = new Exit();
-		build.setDirection​(exit);
-		build.setDestination​(rmID);
+		setDirection​(exit);
+		setDestination​(rmID);
 		
 	}
 

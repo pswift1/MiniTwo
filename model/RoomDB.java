@@ -25,6 +25,7 @@ public class RoomDB {
 	/** Method: RoomDB constructor
 	 * * Remains private to implement the Singleton pattern */
 	private RoomDB() {
+		rooms = new ArrayList<>();
 		
 	}
 	
@@ -50,12 +51,14 @@ public class RoomDB {
 		 ArrayList<Item> it = new ArrayList<Item>();
 			for(Room room : rooms) {
 			    if(room.getRoomID() == roomID) {
-				 it.add(ItemDB.getInstance().getItem​(roomID));	
+				 for (Integer itemID: room.getItems())
+			    	it.add(ItemDB.getInstance().getItem​(itemID));	
 			    }
-			    
-				throw new GameException("That room is not found.");
-			    
-			}
+			   
+			    }
+//			if (it.size() == 0) {
+//				throw new GameException("That room is not found.");
+//			}
 			
 			return it;
 		 }
@@ -99,11 +102,12 @@ public class RoomDB {
 			int roomNum;
 			String roomName;
 			String roomDesc;
-			Room[] roomArray = new Room[6];
-			ArrayList<Exit> roomExits = new ArrayList<>();
-			Room newRoom = new Room();
-			Exit newExit = new Exit();
+			
+			
+			
 				while (scan.hasNextLine()) {
+					Room newRoom = new Room();
+					ArrayList<Exit> roomExits = new ArrayList<>();
 					
 					newRoom.setRoomID(Integer.parseInt(scan.nextLine()));
 					newRoom.setName(scan.nextLine());
@@ -117,6 +121,7 @@ public class RoomDB {
 							roomDirection = scan.nextLine();
 
 							if (!roomDirection.matches("----")) {
+								Exit newExit = new Exit();
 
 								newExit.buildExit​(roomDirection);
 								roomExits.add(newExit);
@@ -127,10 +132,11 @@ public class RoomDB {
 					}
 
 					newRoom.setExits(roomExits);
-					roomArray[i] = newRoom;
+					rooms.add(newRoom);
 					i++;
 					
 				} 
+				
 				
 			}
 			catch (NumberFormatException | FileNotFoundException e) {

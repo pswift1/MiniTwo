@@ -33,6 +33,8 @@ public class Room {
 	public Room() {
 		exits = new ArrayList<>();
 		items = new ArrayList<>();
+		idb = ItemDB.getInstance();
+		rdb = RoomDB.getInstance();
 	}
 	
 	/** Method: Constructor for the Room class
@@ -47,7 +49,7 @@ public class Room {
 	 * * Calls buildItems, buildDescription, and displayExits to build this String
 	 * * @return String - the current room display String  */
 	public String display() throws GameException {
-		return (buildItems() + ",%n" +  displayExits() + ",%n " + buildDescription());
+		return (buildItems() + ",\n" +  displayExits() + ",\n " + buildDescription());
 	}
 	
 	/** Method: buildDescription
@@ -72,7 +74,7 @@ public class Room {
 	 * * calls updateRoom to save the changes
 	 * * @param item - - the Item to remove  */
 	public void removeItem(Item item) throws GameException{
-		if (!items.contains(item)) {
+		if (!items.contains(item.getItemID())) {
 			throw new GameException("That item isn't in this room");
 		}
 		items.remove(item);
@@ -114,7 +116,7 @@ public class Room {
 	public Room retrieveByID(int roomNum) throws GameException {
 		Room rm = new Room();
 		rm = rdb.getRoom(roomNum);
-		if (rm ==null) {
+		if (rm == null) {
 			throw new GameException("This room can't be found");
 		}
 		return rm;
