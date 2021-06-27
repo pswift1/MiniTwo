@@ -130,37 +130,37 @@ public class Commands {
 	 * * @param cmd - String that contains the command entered by the user
 	 * * @return the response to the user's command  */
 	private String itemCommand​(String cmd) throws GameException{
-		String response = "";
+		String output = null;
 		
-		int curRoomNo = player.getCurRoom();
-		Room curRoomObj = new Room().retrieveByID(curRoomNo);
+		int roomNum = player.getCurRoom();
+		Room thisRoom = new Room().retrieveByID(roomNum);
 		
-		char first = cmd.toUpperCase().charAt(0);
+		char commandChar = cmd.toUpperCase().charAt(0);
 		
-		if(first == 'L') {
-		    response = "You are currently in\n" + curRoomObj.display();
+		if(commandChar == 'L') {
+		    output = thisRoom.display();
 		}
 		else {
 		
 		    String[] temp = cmd.split(" ");
 		
 		    if(temp.length < 2) {
-			throw new GameException("An item name is required for these commands: G, R, I. [Commands.itemCommand()]");
+			throw new GameException("You must include the item");
 		    }	
 		}
 		
 			
-		if(first == 'G') {
-		    response = get​(cmd, curRoomObj);
+		if(commandChar == 'G') {
+		    output = get​(cmd, thisRoom);
 		}
-		else if(first == 'R') {
-		    response = remove​(cmd, curRoomObj);
+		else if(commandChar == 'R') {
+		    output = remove​(cmd, thisRoom);
 		}
-		else if(first == 'I') {
-		   response = lookItem​(cmd, curRoomObj);
+		else if(commandChar == 'I') {
+		   output = lookItem​(cmd, thisRoom);
 		}
 		
-		return response;
+		return output;
 	}
 	
 	/** Method: get
@@ -171,23 +171,22 @@ public class Commands {
 	 * * @param room - the room the item is being removed from
 	 * * @return String - item has been added to inventory  */
 	private String get​(String cmd, Room room) throws GameException{
-		String itemAdded = "";
+		String itemAdded = null;
 		
 		String[] temp = cmd.split(" ");
 		String itemName = temp[1];
 				
 		ArrayList<Item> roomItems = room.getRoomItems();		
 		
-		for(Item i : roomItems) {
-		    if(i.getItemName().equalsIgnoreCase(itemName)){  
+		for(Item it : roomItems) {
+		    if(it.getItemName().equalsIgnoreCase(itemName)){  
 				
-			itemAdded = "This item was added to your inventory: " + i.toString();
-			player.addItem​(i);  
-			room.removeItem(i); 		
+			itemAdded = it.toString() + " added to inventory";
+			player.addItem​(it);  
+			room.removeItem(it); 		
 		    }
 		    else {
-			itemAdded = "Item \"" + itemName + "\" is not found in this room. [Commands.get()]"
-					+ "\n(Check spelling.)";
+			itemAdded = "This item isn't found here.";
 		    }
 		}
 		
@@ -201,23 +200,23 @@ public class Commands {
 	 * * @param room - the current Room from student.student.view.Adventure
 	 * * @return String - the Item has been dropped  */
 	private String remove​(String cmd, Room room) throws GameException{
-		String itemRemoved = "";
+		String itemRemoved = null;
 		
 		String[] temp = cmd.split(" ");
 		String itemName = temp[1];
 		
 		ArrayList<Item> playerInventory = player.getInventory();		
 		
-		for(Item i : playerInventory) {
-		    if(i.getItemName().equalsIgnoreCase(itemName)){  
+		for(Item it : playerInventory) {
+		    if(it.getItemName().equalsIgnoreCase(itemName)){  
 				
-			itemRemoved = "This item was removed from your inventory: " + i.toString();
-			player.removeItem​(i);  
-			room.dropItem(i); 
+			itemRemoved = it.toString() +" removed from your inventory.";
+			player.removeItem​(it);  
+			room.dropItem(it); 
 		    }
 		    else {
-			itemRemoved = "Your inventory doesn't have this item: \"" + itemName
-				+ "\". [Commands.remove()] \n(Check your spelling.)";
+			itemRemoved = "You don't have this item.";
+				
 		    }
 		}
 		return itemRemoved;  
@@ -229,18 +228,19 @@ public class Commands {
 	 * * @param room - the current Room from student.student.view.Adventure
 	 * * @return String - the String for the look command  */
 	private String lookItem​(String cmd, Room room) throws GameException{
-		String look = "";
+		String look = null;
 		
 		String[] temp = cmd.split(" ");
 		String itemName = temp[1];
 			
 		ArrayList<Item> roomItems = room.getRoomItems();
-		for(Item i : roomItems) {
-		    if(i.getItemName().equalsIgnoreCase(itemName)){
-			look = "Inspecting item - " + itemName + " - " + i.display();
+		for(Item it : roomItems) {
+			
+		    if(it.getItemName().equalsIgnoreCase(itemName)){
+			look = "Inspecting item - " + itemName + " - " + it.display();
 		    }
 		    else {
-			look = itemName + " is not in this room. [Commands.lookItem()]";
+			look = "I don't see " + itemName;
 		    }
 		} 
 		return look;
