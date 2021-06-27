@@ -85,7 +85,7 @@ public class ItemDB {
 			
 		}
 		
-		// this has to find and read the items from the text
+		
 	}catch (FileNotFoundException e) {
 		e.printStackTrace();
 	}

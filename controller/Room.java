@@ -77,7 +77,8 @@ public class Room {
 		if (!items.contains(item.getItemID())) {
 			throw new GameException("That item isn't in this room");
 		}
-		items.remove(item);
+		
+		items.remove(Integer.valueOf(item.getItemID()));
 		updateRoom();
 	}
 	

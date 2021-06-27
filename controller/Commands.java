@@ -41,13 +41,12 @@ public class Commands {
 			  
 			returnCommand = 1;
 		}
-		else if(cmdChar == 'N' || cmdChar == 'S' ||
-			cmdChar == 'E' || cmdChar == 'W' ||
+		else if(cmdChar == 'N' || cmdChar == 'S' || cmdChar == 'E' || cmdChar == 'W' ||
 			cmdChar == 'U' || cmdChar == 'D') {
 		    
 			returnCommand = 2;
 		}
-		else if(cmdChar == 'L' )  {
+		else if(cmdChar == 'L' || cmdLine.equalsIgnoreCase("look"))  {
 			    
 			returnCommand = 3;
 		}
@@ -80,11 +79,11 @@ public class Commands {
 		String output = null;
 		int validated = validateCommand​(cmd);
 		
-		if (validated == 1 || validated == 4) {
+		if (validated == 1 || validated == 3) {
 			output = itemCommand​(cmd);
 		}else if (validated == 2) {
 			output = move​(cmd);
-		}else if (validated == 3) {
+		}else if (validated == 4) {
 			output = player.printInventory();
 		}else if (validated == 0) {
 			output = "Exiting game.";
@@ -109,12 +108,12 @@ public class Commands {
 		char first = cmdRoom.toUpperCase().charAt(0);
 		int curRoomNo = player.getCurRoom();
 			
-		Room roomObj = new Room().retrieveByID(curRoomNo);
+		Room room = new Room().retrieveByID(curRoomNo);
 			
-		int nextRmNo = roomObj.validDirection(first); 
+		int nextRmNo = room.validDirection(first); 
 			
-		    roomObj.setVisited(true);
-		    roomObj.updateRoom();
+		room.setVisited(true);
+		room.updateRoom();
 		    nextRoom = new Room().retrieveByID(nextRmNo).toString();
 		    player.setCurRoom​(nextRmNo);
 			
@@ -205,19 +204,22 @@ public class Commands {
 		String itemName = temp[1];
 		
 		ArrayList<Item> playerInventory = player.getInventory();		
-		
+		Item itemToBeRemoved = new Item();
 		for(Item it : playerInventory) {
 		    if(it.getItemName().equalsIgnoreCase(itemName)){  
-				
+			itemToBeRemoved = it;	
 			itemRemoved = it.toString() +" removed from your inventory.";
-			player.removeItem​(it);  
-			room.dropItem(it); 
+			
 		    }
+		    
 		    else {
 			itemRemoved = "You don't have this item.";
 				
 		    }
+		   
 		}
+		player.removeItem​(itemToBeRemoved);  
+		room.dropItem(itemToBeRemoved); 
 		return itemRemoved;  
 	}
 	
